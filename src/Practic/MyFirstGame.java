@@ -1,10 +1,10 @@
-package Lesson14_08;
+package Practic;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class myFirstGame {
+public class MyFirstGame {
     public static void main(String[] args) {
         char[] work = random().toCharArray();
         System.out.println(work);

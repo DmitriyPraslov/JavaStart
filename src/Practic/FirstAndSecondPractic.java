@@ -1,8 +1,8 @@
-import java.util.Arrays;
+package Practic;
 
-public class Test {
+public class FirstAndSecondPractic {
     public static void main(String[] args){
-        Test var1 = new Test ();
+        FirstAndSecondPractic var1 = new FirstAndSecondPractic();
         int mass1[] = {1,2,3,4};
         var1.devTwo(mass1);
         var1.devTwo(mass1, 4);
