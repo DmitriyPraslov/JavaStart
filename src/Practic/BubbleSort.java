@@ -8,6 +8,8 @@ public class BubbleSort {
         int[] arr = {1,2,3,20};
         System.out.println(Arrays.toString(sort1(arr)));
     }
+   //по перше метод сортує в зворотньому порядку, ваші наміри неявні 
+    // виходячи з назви методу. Змінна темп зявляється і втих випадках в яких непотрібна.в другому методі- те саме.
     public static int[] sort(int[] mas){
         for (int j = 0; j < mas.length; j++) {
             for (int i=0; i< mas.length-1; i++){
