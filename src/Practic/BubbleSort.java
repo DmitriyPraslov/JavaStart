@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class BubbleSort {
     public static void main(String[] args){
-        int[] arr = {1,2,3,20};
-        System.out.println(Arrays.toString(sort1(arr)));
+        int[] arr = {13,7,1,2,3,20};
+        System.out.println(Arrays.toString(sort(arr)));
     }
    //по перше метод сортує в зворотньому порядку, ваші наміри неявні 
     // виходячи з назви методу. Змінна темп зявляється і втих випадках
@@ -14,10 +14,8 @@ public class BubbleSort {
     public static int[] sort(int[] mas){
         for (int j = 0; j < mas.length; j++) {
             for (int i=0; i< mas.length-1; i++){
-                int temp=mas[i];
-                if (mas[i]<mas[i+1]){
-                    mas[i]=mas[i+1];
-                    mas[i+1]=temp;
+                if (mas[i]>mas[i+1]){
+                    swapElement(mas, i);
                 }
             }
         }
@@ -29,14 +27,18 @@ public class BubbleSort {
        while (counter!=0){
            counter = 0;
             for (int i = 0; i < mas.length - 1; i++) {
-                int temp = mas[i];
-                if (mas[i] < mas[i + 1]) {
-                    mas[i] = mas[i + 1];
-                    mas[i + 1] = temp;
+                if (mas[i] > mas[i + 1]) {
+                    swapElement(mas, i);
                     counter++;
                 }
             }
         }
         return mas;
+    }
+
+    private static void swapElement(int[] mas, int i) {
+        int temp = mas[i];
+        mas[i] = mas[i + 1];
+        mas[i+1] = temp;
     }
 }
