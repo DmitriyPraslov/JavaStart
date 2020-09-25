@@ -12,7 +12,7 @@ public class EighthPractic {
         }
     }
 
-    public static int[] unicArray(int[] arr){
+    public static int[] unicArray(int[] arr){// спробуйте іншу реалізацію, треба для накопичення щось обрати, можливо подивитися у бік класу StringBuilder
         int result = 0;
         int[][] temp = new int[arr.length][2];
         for (int i=0;i<arr.length;i++){
