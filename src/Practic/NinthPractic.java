@@ -10,13 +10,13 @@ public class NinthPractic {
     }
 
 
-    public static int[] uniqueArraysElement(int[][] arr1, int[][] arr2){
+    public static int[] uniqueArraysElement(int[][] arr1, int[][] arr2){ // на мій погляд з флагами намудріли
         int[] sameElementArray = sameElementCheck(arr1, arr2);
         System.out.println("Элементы которые совпадают: "+Arrays.toString(sameElementArray));
         int[] sumBothArrays = sumArrays(arr1, arr2);
         System.out.println("Сумма элементов двух массивов: "+Arrays.toString(sumBothArrays));
         int resultArrayLength=0;
-        for (int i=0;i<sumBothArrays.length;i++){
+        for (int i=0;i<sumBothArrays.length;i++){//пошук кількості неспівпадаючих елементів ускладнили на мій погляд.
             boolean indicator=false;
             for (int j=0;j<sameElementArray.length;j++){
                 if (sumBothArrays[i]==sameElementArray[j]){
@@ -48,7 +48,7 @@ public class NinthPractic {
         return result;
     }
 
-    public static int[] sumArrays(int[][] mas1, int[][] mas2){
+    public static int[] sumArrays(int[][] mas1, int[][] mas2){ // good for you
         int[] result = new int[countElement(mas1)+countElement(mas2)];
         int iter = 0;
         for (int i=0;i<mas1.length;i++){
@@ -76,7 +76,7 @@ public class NinthPractic {
         return result;
     }
 
-    public static int[] sameElementCheck(int[][] mas1, int[][] mas2){
+    public static int[] sameElementCheck(int[][] mas1, int[][] mas2){// нема перевірок на дублі
         int n=0;
         for (int i=0;i<mas1.length;i++){
             for (int j=0;j<mas1[i].length;j++){
@@ -91,7 +91,7 @@ public class NinthPractic {
         }
         int count=0;
         int[] result = new int[n];
-        if (n>0) {
+        if (n>0) {                                                       // good for you :)
             for (int i = 0; i < mas1.length; i++) {
                 for (int j = 0; j < mas1[i].length; j++) {
                     for (int g = 0; g < mas2.length; g++) {
