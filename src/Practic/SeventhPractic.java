@@ -1,6 +1,6 @@
 package Practic;
 
-public class SeventhPractic {
+public class SeventhPractic { // Good for you :)
         public static void main(String[] args) {
         int[][] mas1 = {{1,2},
                     {3,7,6},
