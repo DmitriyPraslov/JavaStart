@@ -12,11 +12,11 @@ public class SecondTestExercise {
 }
 class Test2{
     public int test(int[] height){
-        int[][] resultArray = new int[arrayLength(height)][3];
+        int[][] resultArray = new int[arrayLength(height)][3];//виклик зайвого методу, пропоную взагалі відмовитись від цього масиву Це спростить код. Спробуйте.
         int resultArrayStep = 0;
         int minWallHeight = 0;
         for (int i=0;i<height.length-1;i++){
-            int stepLength = 1;
+            int stepLength = 1;// зайва змінна , можемо використовувати j
             for (int j=i+1;j<height.length;j++){
                 minWallHeight = minSide(height[i], height[j]);
                 resultArray[resultArrayStep][0]=minWallHeight*stepLength;
@@ -31,7 +31,7 @@ class Test2{
         return result;
     }
 
-    public int arrayLength(int[] arr){
+    public int arrayLength(int[] arr){// у нас є arr.length Для чього цей метод? для 1-вимірного масиву це зайве на мій погляд.
         int result = 0;
         for (int i=arr.length-1;i>0;i--){
             for (int j=0;j<i;j++){
