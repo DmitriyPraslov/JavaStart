@@ -2,7 +2,8 @@ package Practic;
 
 import java.util.Arrays;
 
-public class SixthPractic {
+public class SixthPractic { //Ускладнили реалізацію. Намагайтеся не додавати складності свого алгоритму до складності завдання
+    // рухатися треба у циклах по масиву у якого менше row а коли рухаєтесь по рядку , рухайтесь по тому який коротший Уйде проблема з різною кількістю елементів в рядках з одн. індексом
     public static void main(String[] args) {
         SixthPractic six = new SixthPractic();
         int[][] mas1 = {{1,2},
