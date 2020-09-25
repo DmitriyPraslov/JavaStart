@@ -7,7 +7,7 @@ public class FirstTestExercise {
     }
 }
 
-class Test1 {
+class Test1 {// в цілому гарне рішення, тіки б подумав би над зменшенням кількості змінних та їх іменами
     public int test(int n) {
         int count = n;
         int result = 0;
