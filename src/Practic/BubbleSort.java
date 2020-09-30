@@ -7,6 +7,7 @@ public class BubbleSort {
     public static void main(String[] args){
         int[] arr = {13,7,1,2,3,20};
         System.out.println(Arrays.toString(sort(arr)));
+        //qwerty
     }
    //по перше метод сортує в зворотньому порядку, ваші наміри неявні 
     // виходячи з назви методу. Змінна темп зявляється і втих випадках
