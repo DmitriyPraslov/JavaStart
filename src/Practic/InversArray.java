@@ -5,21 +5,14 @@ import java.util.Arrays;
 public class InversArray {
     public static void main(String[] args) {
         int[] someArray = {1,5,7,4,2};
-        invers1(someArray);
+        int[][] someDoubleArray = {{1,5,7,4,2},{2,3,6,9},{3,2,1}};
+        invers(someArray);
+        System.out.println(Arrays.toString(someArray));
+        invers(someDoubleArray);
 
     }
-    public static int[] invers(int[] arr){
-        int[] result = new int[arr.length];
-        int step = 0;
-        for (int i=arr.length-1;i>=0;i--){
-            result[step]=arr[i];
-            step++;
-        }
-        System.out.println(Arrays.toString(result));
-        return result;
-    }
 
-    public static void invers1 (int[] arr){
+    public static void invers (int[] arr){
         int temp = 0;
         int iter = arr.length/2;
         int step = arr.length-1;
@@ -29,6 +22,12 @@ public class InversArray {
             arr[step]=temp;
             step--;
         }
-        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void invers (int[][] arr){
+        for (int i=0;i< arr.length;i++){
+            invers(arr[i]);
+            System.out.println(Arrays.toString(arr[i]));
+        }
     }
 }
