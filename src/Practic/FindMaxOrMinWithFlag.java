@@ -8,7 +8,7 @@ public class FindMaxOrMinWithFlag {
         System.out.println("Введите флаг - (0 или 1)");
         int flag = scanFlag.nextInt();
         int[] newArray = {2,4,77,34,2,-1,-3,10};
-        System.out.println(findMaxOrMin(newArray, flag));
+        System.out.println(findMaxOrMin1(newArray, flag));
     }
     public static int findMaxOrMin(int[] arr, int flag){
         int result = arr[0];
@@ -26,6 +26,16 @@ public class FindMaxOrMinWithFlag {
                     break;
             }
         }
+        return result;
+    }
+
+    public static int findMaxOrMin1(int[] arr, int flag){
+        int result = arr[0];
+        for (int temp : arr){
+                if (flag==1? temp>result : temp<result){
+                    result = temp;
+                }
+            }
         return result;
     }
 }
