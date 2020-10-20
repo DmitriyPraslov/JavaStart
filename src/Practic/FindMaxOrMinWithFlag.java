@@ -29,7 +29,7 @@ public class FindMaxOrMinWithFlag {
         return result;
     }
 
-    public static int findMaxOrMin1(int[] arr, int flag){
+    public static int findMaxOrMin1(int[] arr, int flag){ //respect :)
         int result = arr[0];
         for (int temp : arr){
                 if (flag==1? temp>result : temp<result){
