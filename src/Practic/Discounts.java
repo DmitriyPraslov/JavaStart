@@ -1,4 +1,4 @@
-package E_Olimp;
+package Practic;
 
 public class Discounts {
     public static void main(String[] args) {

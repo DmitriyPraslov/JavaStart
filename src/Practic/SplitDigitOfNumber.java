@@ -1,4 +1,4 @@
-package E_Olimp;
+package Practic;
 
 import java.util.Scanner;
 
