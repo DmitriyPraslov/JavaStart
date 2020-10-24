@@ -1,4 +1,4 @@
-package Practic;
+package E_Olimp;
 
 import java.util.Arrays;
 import java.util.HashSet;
