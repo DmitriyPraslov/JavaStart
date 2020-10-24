@@ -6,12 +6,12 @@ public class FindMinMaxAndMaxMin {
         System.out.println(minMax(array));
         System.out.println(maxMin(array));
     }
-    public static int minMax (int[][] arr){
+    public static int minMax (int[][] arr){// добре
         int[] temp = new int[arr.length];
         for (int i=0;i<arr.length;i++){
             temp[i] = findMaxElement(arr[i]);
         }
-        int result = 0;
+        int result = 0;// це зайве
         return result = findMinElement(temp);
     }
 
