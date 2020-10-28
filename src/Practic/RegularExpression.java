@@ -37,13 +37,19 @@ public class RegularExpression {
         eMail[2] = "mwaelhachmi2@stiesy.com";
         eMail[3] = "4ashemasalahs@ramurop.tk";
         eMail[4] = "jsivaprasadmadas8@brandly.tech";
-        String[] date = new String[4];
+        String[] date = new String[10];
         date[0] = "02.20.2020";
-        date[1] = "23.04.2020";
-        date[2] = "23.04.20";
+        date[1] = "00.20.2020";
+        date[2] = "02.00.2020";
         date[3] = "02.31.20";
+        date[4] = "13.32.99";
+        date[5] = "3.2.99";
+        date[6] = "3.2.9";
+        date[7] = "3.2.999";
+        date[8] = "3.2.2356";
+        date[9] = "03.02.1001";
         for (String temp : date){
-            System.out.println(temp.matches("[0-3]*[0-9][/\\-.][0-3]*[0-9][/\\-.]([\\d]{2}|[1-2][\\d]{3})"));
+            System.out.println(temp.matches("((0*[1-9])|1[0-2])[/\\-.]((((0*[1-9])|1[0-9])|2[0-9])|3[0-1])[/\\-.](([\\d]{2})|(1[\\d]{3})|(20[\\d]{2})|(2100))"));
         }
         for (String temp : eMail) {
             System.out.println(temp.matches("[a-z0-9][\\w.]*@[\\w.]+\\.\\w+"));
