@@ -20,6 +20,7 @@ public class SumNumberOfCollection {
             }
         }
         System.out.println(sum(intCollection));
+        System.out.println(sumOfSimpleDigit(intCollection));
     }
 
     public static int toInt(String str){
@@ -34,6 +35,23 @@ public class SumNumberOfCollection {
         int result = 0;
         for (Integer temp : intCol){
             result = result + temp;
+        }
+        return result;
+    }
+
+    public static int sumOfSimpleDigit (ArrayList<Integer> intCollection){
+        int result = 0;
+        int divideCounter;
+        for (Integer temp : intCollection){
+            divideCounter = 0;
+            for (int i=1;i<=temp;i++){
+                if (temp%i==0&&temp>0){
+                    divideCounter++;
+                }
+            }
+            if (divideCounter==2){
+                result = result + temp;
+            }
         }
         return result;
     }
