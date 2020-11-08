@@ -17,7 +17,7 @@ public class NameCollection {
     public static int findNameCoincidence (ArrayList<String> nameCol, String name){
         int result = 0;
         for (String temp : nameCol){
-            if (temp==name){// Стрінги так не порівнюють ні в якому разі EQUAL or COMPARETO в крайньому разі.
+            if (temp.equals(name)){
                 result++;
             }
         }
