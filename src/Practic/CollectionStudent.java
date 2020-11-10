@@ -40,7 +40,7 @@ public class CollectionStudent {
         }
         return result;
     }
-    public static Collection sort (Collection<Student> students){
+    public static Collection sort (Collection<Student> students){// після сорта колекція стартова буде вже отсортована, ви повертаєте нову колекцію та її ж і сортуєте Чому?
         List<Student> list = new ArrayList<>();
         list.addAll(students);
         Collections.sort(list);
@@ -48,14 +48,14 @@ public class CollectionStudent {
     }
 }
 
-class CompareStudentAge implements Comparator<Student>{
+class CompareStudentAge implements Comparator<Student>{ //не знайшов де ви використовуєте цей клас
     @Override
     public int compare(Student s1, Student s2){
         return s1.age - s2.age;
     }
 }
 
-class Student implements Comparable<Student>{
+class Student implements Comparable<Student>{// для чого реалізуєте цей інтерфейс ?
     String name;
     int age;
     String eMail;
