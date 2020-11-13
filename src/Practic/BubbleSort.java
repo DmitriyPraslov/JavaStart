@@ -1,45 +1,30 @@
 package Practic;
 
-
 import java.util.Arrays;
 
 public class BubbleSort {
-    public static void main(String[] args){
-        int[] arr = {13,7,1,2,3,20};
-        System.out.println(Arrays.toString(sort(arr)));
-        //qwerty 4565675
+    public static void main(String[] args) {
+        int[] intArray = {6,2,8,9,2,5,3,4,9};
+        bubbleSort(intArray);
+        System.out.println(Arrays.toString(intArray));
     }
-   //по перше метод сортує в зворотньому порядку, ваші наміри неявні 
-    // виходячи з назви методу. Змінна темп зявляється і втих випадках
-    //в яких непотрібна.в другому методі- те саме. Пропоную виділити сегмент який змінєю елементи місцями в окремий метод з відповідною назвою- уйти від дублювання.
-    public static int[] sort(int[] mas){
-        for (int j = 0; j < mas.length; j++) {
-            for (int i=0; i< mas.length-1; i++){
-                if (mas[i]>mas[i+1]){
-                    swapElement(mas, i);
+
+    public static void bubbleSort(int[] arr){
+        boolean checker = false;
+        while (!checker==true){
+            checker=true;
+            for (int i=0;i<arr.length-1;i++){
+                if (arr[i]>arr[i+1]){
+                    swapElement(arr, i, i+1);
+                    checker=false;
                 }
             }
         }
-        return mas;
     }
-
-    public static int[] sort1(int[] mas){
-       int counter = -1;
-       while (counter!=0){
-           counter = 0;
-            for (int i = 0; i < mas.length - 1; i++) {
-                if (mas[i] > mas[i + 1]) {
-                    swapElement(mas, i);
-                    counter++;
-                }
-            }
-        }
-        return mas;
-    }
-
-    private static void swapElement(int[] mas, int i) {
-        int temp = mas[i];
-        mas[i] = mas[i + 1];
-        mas[i+1] = temp;
+    public static void swapElement(int[] arr, int firstElement, int secondElement){
+        int temp = arr[firstElement];
+        arr[firstElement]=arr[secondElement];
+        arr[secondElement]=temp;
     }
 }
+
