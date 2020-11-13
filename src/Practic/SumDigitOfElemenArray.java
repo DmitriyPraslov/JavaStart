@@ -16,12 +16,13 @@ public class SumDigitOfElemenArray {
         System.out.println(temp);
     }
 
-    public static String convertIntArrayToString(int[] intArray){
-        StringBuffer result = new StringBuffer();
-        for (int i=0;i<intArray.length;i++){
-            result.append(intArray[i]);
+    public static void sumDigit(int[][] arr){
+        StringBuffer intToString = new StringBuffer();
+        for (int i=0;i<arr.length;i++){
+            intToString.append(convertIntArrayToString(arr[i]));
         }
-        return result.toString();
+        int temp = sum(intToString.toString());
+        System.out.println(temp);
     }
 
     public static int sum (String str){
@@ -32,12 +33,11 @@ public class SumDigitOfElemenArray {
         return result;
     }
 
-    public static void sumDigit(int[][] arr){    // реализовывать используя методы для одномерного массива
-        StringBuffer intToString = new StringBuffer();
-        for (int i=0;i<arr.length;i++){
-            intToString.append(convertIntArrayToString(arr[i]));
+    public static String convertIntArrayToString(int[] intArray){
+        StringBuffer result = new StringBuffer();
+        for (int i=0;i<intArray.length;i++){
+            result.append(intArray[i]);
         }
-        int temp = sum(intToString.toString());
-        System.out.println(temp);
+        return result.toString();
     }
 }
