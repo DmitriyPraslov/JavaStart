@@ -10,7 +10,7 @@ public class BubbleSort {
         System.out.println(Arrays.toString(intArray));
 //        System.out.println(Arrays.binarySearch(someArray, 7));  // Уже готовый метод класса Arrays
 //        System.out.println(binarySearch(intArray, 0, 0, intArray.length-1)); // рекурсивный поиск
-        System.out.println(binarySearch(intArray, 10)); // через цикл
+        System.out.println(binarySearch(intArray, 2)); // через цикл
     }
 
     public static void bubbleSort(int[] arr){
@@ -40,10 +40,10 @@ public class BubbleSort {
         if (arr[middleIndex] == key){
             result = middleIndex;
             return result;
-        } else if ((arr[middleIndex]<key&&key>=arr[middleIndex+1])&&key<=arr[endIndex]) {
+        } else if (arr[middleIndex]<key&&key>=arr[middleIndex+1]) {
             return binarySearch(arr, key, middleIndex+1, endIndex);
 
-        } else if ((arr[middleIndex]>key&&key<=arr[middleIndex-1])&&key>=arr[startIndex]){
+        } else if (arr[middleIndex]>key&&key<=arr[middleIndex-1]){
             return binarySearch(arr, key, startIndex,middleIndex-1);
         } else {
             result = -1;
@@ -65,11 +65,11 @@ public class BubbleSort {
             if (key==arr[mid]){
                 result=mid;
                 break;
-            } else if ((key>arr[mid]&&key>=arr[mid+1])&&key<=arr[endIndex]){
+            } else if (key>arr[mid]&&key>=arr[mid+1]){
                 startIndex = mid+1;
                 mid = findMiddleIndex(startIndex, endIndex);
                 endIndex = mid;
-            } else if ((key<arr[mid]&&key<=arr[mid-1])&&key>=arr[endIndex]){
+            } else if (key<arr[mid]&&key<=arr[mid-1]){
                 endIndex = mid-1;
                 mid = findMiddleIndex(startIndex, endIndex);
                 startIndex = mid;
