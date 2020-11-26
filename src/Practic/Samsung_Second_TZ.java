@@ -6,11 +6,11 @@ import java.util.*;
 public class Samsung_Second_TZ {
     public static void main(String[] args) throws IOException {
         TestSamsung test = new TestSamsung();
-        String s1 = new String("BazABaabzaAba");
+        String s1 = new String("ABazABaabzaaA");
         String s2 = new String("TacoCat");
         String s3 = new String("AcZCbaBz");
-        String s4 = new String("abcdefghijklmnopqrstuvwxyz");
-        System.out.println(test.solution(s4));
+        String s4 = new String("bcdefghijklmnopqrstuvwxyz");
+        System.out.println(test.solution(s1));
     }
 }
 
@@ -19,50 +19,106 @@ class TestSamsung {
         if (s.matches("[A-Za-z]*") == false) {
             throw new IOException();
         }
-        int result = 200;
-        StringBuffer buffer = (checkWord(s));
-        System.out.println(buffer);
-        String[] resultCombination;
-        resultCombination = buffer.toString().split("\\|");
-        for (int i=0;i<resultCombination.length;i++){
-            if((checkWord(resultCombination[i])).toString().equals(resultCombination[i])){
-                if (result>resultCombination[i].length()) {
-                    result = resultCombination[i].length();
-                    System.out.println(resultCombination[i]);
+        int result = s.length();
+        boolean logic = false;
+        List<String> combinationList = new LinkedList<>(builtCombination(s));
+        System.out.println(combinationList);
+        for (int i=0;i<combinationList.size();i++){
+            if (findTrueCombination(combinationList.get(i))){
+                if (result>=combinationList.get(i).length()){
+                    result = combinationList.get(i).length();
+                    System.out.println(combinationList.get(i));
+                    logic = true;
                 }
             }
         }
-        return result==200?-1:result;
+        return logic==false?-1:result;
     }
 
-    StringBuffer checkWord (String s){
-        StringBuffer buffer = new StringBuffer("");
-        int bufferSizeCheck;
+    List<String> builtCombination (String s){
+        List<String> result = new LinkedList<>();
         for (int i=0;i<s.length();i++){
-            bufferSizeCheck = buffer.length();
-            for (int j=0;j<s.length();j++){
-                if (Character.isUpperCase(s.charAt(i))&&Character.isLowerCase(s.charAt(j))){
-                    if (s.charAt(i)==Character.toUpperCase(s.charAt(j))){
-                        buffer.append(s.charAt(i));
+            result.add(String.valueOf(s.charAt(i)));
+            for (int j=i+1;j<s.length();j++){
+                result.add((s.substring(i,j+1)));
+            }
+        }
+        return result;
+    }
+
+    boolean findTrueCombination (String s) {
+        boolean result = false;
+        int counter = 0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < s.length(); j++) {
+                if (Character.isUpperCase(s.charAt(i)) && Character.isLowerCase(s.charAt(j))) {
+                    if (s.charAt(i) == Character.toUpperCase(s.charAt(j))) {
+                        counter++;
                         break;
                     }
-                } else if (Character.isLowerCase(s.charAt(i))&&Character.isUpperCase(s.charAt(j))){
-                    if (s.charAt(i)==Character.toLowerCase(s.charAt(j))){
-                        buffer.append(s.charAt(i));
+                } else if (Character.isLowerCase(s.charAt(i)) && Character.isUpperCase(s.charAt(j))) {
+                    if (s.charAt(i) == Character.toLowerCase(s.charAt(j))) {
+                        counter++;
                         break;
                     }
                 }
             }
-            if (bufferSizeCheck==buffer.length()){
-                buffer.append("|");
-            }
         }
-        return buffer;
+        if (s.length()==counter){
+            result = true;
+        }
+        return result;
     }
 }
 
 
 
+
+
+//    public int solution(String s) throws IOException {
+//        if (s.matches("[A-Za-z]*") == false) {
+//            throw new IOException();
+//        }
+//        int result = 200;
+//        StringBuffer buffer = (checkWord(s));
+//        System.out.println(buffer);
+//        String[] resultCombination;
+//        resultCombination = buffer.toString().split("\\|");
+//        for (int i=0;i<resultCombination.length;i++){
+//            if((checkWord(resultCombination[i])).toString().equals(resultCombination[i])){
+//                if (result>resultCombination[i].length()) {
+//                    result = resultCombination[i].length();
+//                    System.out.println(resultCombination[i]);
+//                }
+//            }
+//        }
+//        return result==200?-1:result;
+//    }
+//
+//    StringBuffer checkWord (String s){
+//        StringBuffer buffer = new StringBuffer("");
+//        int bufferSizeCheck;
+//        for (int i=0;i<s.length();i++){
+//            bufferSizeCheck = buffer.length();
+//            for (int j=0;j<s.length();j++){
+//                if (Character.isUpperCase(s.charAt(i))&&Character.isLowerCase(s.charAt(j))){
+//                    if (s.charAt(i)==Character.toUpperCase(s.charAt(j))){
+//                        buffer.append(s.charAt(i));
+//                        break;
+//                    }
+//                } else if (Character.isLowerCase(s.charAt(i))&&Character.isUpperCase(s.charAt(j))){
+//                    if (s.charAt(i)==Character.toLowerCase(s.charAt(j))){
+//                        buffer.append(s.charAt(i));
+//                        break;
+//                    }
+//                }
+//            }
+//            if (bufferSizeCheck==buffer.length()){
+//                buffer.append("|");
+//            }
+//        }
+//        return buffer;
+//    }
 
 
 
