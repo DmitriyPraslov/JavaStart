@@ -10,7 +10,7 @@ import java.util.function.BiConsumer;
 
 public class Parking {
     String adress;
-    Set<Owner> owners=new HashSet<>();
+    Set<Owner> owners=new HashSet<>();// треба зробити так, щоб не було можливості додати 2 овнерів з однаковим прізвищем та імям
     int maxCountPlace;
     int freePlace=maxCountPlace;
     int price;
@@ -132,12 +132,12 @@ class Car {
 
 class Owner {
     String name;
-    Set<Car> myCars=new HashSet<Car>();
+    Set<Car> myCars=new HashSet<Car>(); //дубль два , убрати можливість додавати 2 однакові машини
     Owner (String name){
         this.name = name;
     }
 
-    boolean zaehatInParking(String numberAvto, LocalDateTime date){
+    boolean zaehatInParking(String numberAvto, LocalDateTime date){ // додати перевірку на наявність місць на паркінгу
         boolean result = false;
         for (Car temp : myCars){
             if (temp.number.equals(numberAvto)){
