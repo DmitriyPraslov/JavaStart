@@ -78,14 +78,13 @@ class DaoUser implements DataAcces<User>{
     public User update(User entity) {
         PreparedStatement pst;
         User result = entity;
-        String changeName = "Nikolay";
         String update = "UPDATE User SET Name = ? WHERE ID="+entity.id;
         try {
             pst=getConnection().prepareStatement(update);
-            pst.setString(1, changeName);
+            pst.setString(1, entity.name);
             int temp = pst.executeUpdate();
             if (temp>0) {
-                result.name = changeName;
+                result.name = entity.name;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
