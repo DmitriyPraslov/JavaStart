@@ -20,6 +20,13 @@ public class ThreadHome {
         }
 
         first.start();
+
+        try {
+            first.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(list);
     }
 }
 
