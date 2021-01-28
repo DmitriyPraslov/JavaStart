@@ -21,10 +21,10 @@ public class Cafe{
     }
 
     void serve(List<Client> clientList){
-        for (Client client : clientList){
+        for (Client client : clientList) {
             try {
                 peopleCanToServe.put(client);
-                Thread thread = new Thread(new ServeThread(peopleCanToServe, client));
+                ServeThread thread = new ServeThread(peopleCanToServe, client);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
