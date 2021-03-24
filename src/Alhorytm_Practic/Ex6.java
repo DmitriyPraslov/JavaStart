@@ -8,7 +8,7 @@ public class Ex6 {
     }
 }
 class MultipleDigit{
-    int findMin (int[] arr){
+    int findMin (int[] arr){// не розумію ваші наміри
         int result = 0;
         boolean findResultStatus = false;
         while (!findResultStatus){
