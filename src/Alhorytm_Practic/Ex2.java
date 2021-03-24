@@ -16,13 +16,13 @@ public class Ex2 {
 
 class FindBalance{
     String[] findMaxBalancedString(String[] arr){
-        List<String[]> combination = builtCombination(arr);
+        List<String[]> combination = builtCombination(arr); // тут ваші наміри зрозумілі
 //        for (String[] temp : combination){
 //            System.out.println(Arrays.toString(temp));
 //        }
         String[] maxLengthArray = {};
         for (String[] temp : combination){
-            if (checkArray(temp)){
+            if (checkArray(temp)){// тут ваші наміри зрозумілі
                 if (temp.length>maxLengthArray.length){
                     maxLengthArray = temp;
                 }
@@ -31,7 +31,7 @@ class FindBalance{
         return maxLengthArray;
     }
 
-    List<String[]> builtCombination (String[] s){
+    List<String[]> builtCombination (String[] s){// тут з намірами все добре, я вас розумію
         List<String[]> result = new LinkedList<>();
         for (int i=0;i<s.length;i++){
             for (int j=i+1;j<s.length;j++){
@@ -41,7 +41,7 @@ class FindBalance{
         return result;
     }
 
-    boolean checkArray(String[] arr){
+    boolean checkArray(String[] arr){// а тут я вас зовсім не розумію, вашу реалізацію
         boolean result = false;
         int counter = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -68,7 +68,7 @@ class FindBalance{
         return result;
     }
 
-    boolean checkIntegerInArray(String[] arr, String firstElement, String secondElement){
+    boolean checkIntegerInArray(String[] arr, String firstElement, String secondElement){// а тут я вас зовсім не розумію, вашу реалізацію
         boolean result = false;
         int countInteger = 0;
         if (firstElement.matches("-?[0-9]+") && secondElement.matches("-?[0-9]+")){
