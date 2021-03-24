@@ -15,7 +15,7 @@ public class Ex3 {
     }
 }
 class FindMin{
-    List<Integer> findMin(int[] arr, int count){
+    List<Integer> findMin(int[] arr, int count){// все добре але б я перевірив би що соинт не перевищує кількість елементів масиву
         List<Integer> result = new ArrayList<>();
         List<Integer> workList = new ArrayList<>();
         for (int temp : arr){
