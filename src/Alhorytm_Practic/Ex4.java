@@ -5,7 +5,7 @@ public class Ex4 {
         String[] arr = {"wrgkwo", "dq34fdsg", "24f", "kfjghq509"};
         System.out.println(findMaxSumOfElement(arr));
     }
-    public static String findMaxSumOfElement(String[] arr){
+    public static String findMaxSumOfElement(String[] arr){// все добре
         String result = "";
         int maxSum = sumElement(arr[0]);
         for (int i=0;i<arr.length;i++){
