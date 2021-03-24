@@ -19,7 +19,7 @@ class Range{
             list.add(i);
         }
     }
-    List<Integer> findCross(Range...rangesList){
+    List<Integer> findCross(Range...rangesList){// все добре
         List<Integer> result = new ArrayList<>();
         boolean trigger;
         for (Integer temp : rangesList[0].list) {
