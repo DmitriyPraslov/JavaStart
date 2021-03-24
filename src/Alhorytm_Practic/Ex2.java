@@ -45,8 +45,9 @@ class FindBalance{
         boolean result = false;
         int counter = 0;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (checkIntegerInArray(arr,arr[i],arr[j])){
+            for (int j = 0; j < arr.length; j++) {// для чого цикл з лічильником який повністю співпадає з зовнішнім циклом
+                if (checkIntegerInArray(arr,arr[i],arr[j])){// тут достатньо 2-х параметрів масив та індекс чи я чогось упустив
+                    // код читається дуже тяжко, треба рефакторити
                     counter++;
                     break;
                 } else if (Character.isUpperCase(arr[i].charAt(0)) && Character.isLowerCase(arr[j].charAt(0))) {
