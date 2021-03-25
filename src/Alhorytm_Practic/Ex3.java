@@ -1,7 +1,10 @@
 package Alhorytm_Practic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Ex3 {
     public static void main(String[] args) {
@@ -11,12 +14,16 @@ public class Ex3 {
         FindMin f = new FindMin();
         System.out.println(f.findMin(arr1,2));
         System.out.println(f.findMin(arr2,1));
-        System.out.println(f.findMin(arr3,3));
+        System.out.println(f.findMin(arr3,6));
     }
 }
 class FindMin{
     List<Integer> findMin(int[] arr, int count){// все добре але б я перевірив би що соинт не перевищує кількість елементів масиву
         List<Integer> result = new ArrayList<>();
+        if (count>arr.length){
+            result = IntStream.of(arr).boxed().collect(Collectors.toList());
+            return result;
+        }
         List<Integer> workList = new ArrayList<>();
         for (int temp : arr){
             workList.add(temp);
