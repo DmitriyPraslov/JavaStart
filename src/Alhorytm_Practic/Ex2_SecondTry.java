@@ -28,9 +28,10 @@ class BalanceString {
     List<String[]> builtCombination (String[] s){
         List<String[]> result = new LinkedList<>();
         for (int i=0;i<s.length;i++){
-            for (int j=i+1;j<s.length;j++){
+            for (int j=i+1;j<s.length;j++){// 
 //                System.out.println(Arrays.toString(Arrays.copyOfRange(s,i,j+1)));
-                result.add(Arrays.copyOfRange(s,i,j+1));
+                result.add(Arrays.copyOfRange(s,i,j+1));// !!! 3 параметр у методі -це кількість елементів які будуть скопійовані починаючи з і 
+                //тому j у циклі може змінюватися до j<s.length-(i+1) 
             }
         }
         return result;
@@ -38,15 +39,16 @@ class BalanceString {
 
     boolean isBalanced(String[] arr){
         boolean result = false;
-        Map<String,Integer> uniqueLetter = findUniqueLetter(arr);
+        Map<String,Integer> uniqueLetter = findUniqueLetter(arr);// !!!!! ви тут скоріше рахуєте кількість для кожної букви питання до назви методу
 //        System.out.println(uniqueLetter);
         int counterSuccessComparing = 0;
         for (String temp1 : uniqueLetter.keySet()){
-            if (checkByInteger(temp1,uniqueLetter.get(temp1))){ // проверка на число и кратность 2
+            if (checkByInteger(temp1,uniqueLetter.get(temp1))){ // проверка на число и кратность 2 !!!!! ви перевіряєте на кратність і букви ?
+                // можливо є сенс перевірити спочатку в мапі- буква чи цифра та потім викликати відповідний метод тоді другий фор непотрібний
                 counterSuccessComparing++;
             }
             for (String temp2 : uniqueLetter.keySet()){
-                if (checkByLetter(temp1,temp2,uniqueLetter.get(temp1),uniqueLetter.get(temp2))){ // проверка на регистры
+                if (checkByLetter(temp1,temp2,uniqueLetter.get(temp1),uniqueLetter.get(temp2))){ // проверка на регистры !!!!!! багато зайвих параметрів
                     counterSuccessComparing++;
                 }
             }
