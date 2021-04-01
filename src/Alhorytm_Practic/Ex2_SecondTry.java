@@ -39,21 +39,22 @@ class BalanceString {
 
     boolean isBalanced(String[] arr){
         boolean result = false;
-        Map<String,Integer> uniqueLetter = findUniqueLetter(arr);// !!!!! ви тут скоріше рахуєте кількість для кожної букви питання до назви методу
+        Map<String,Integer> countUniqueLetter = findUniqueLetter(arr);// !!!!! ви тут скоріше рахуєте кількість для кожної букви питання до назви методу
 //        System.out.println(uniqueLetter);
         int counterSuccessComparing = 0;
-        for (String temp1 : uniqueLetter.keySet()){
-            if (checkByInteger(temp1,uniqueLetter.get(temp1))){ // проверка на число и кратность 2 !!!!! ви перевіряєте на кратність і букви ?
+        for (String temp1 : countUniqueLetter.keySet()){
+            if (checkByInteger(temp1,countUniqueLetter.get(temp1))){ // проверка на число и кратность 2 !!!!! ви перевіряєте на кратність і букви ?
                 // можливо є сенс перевірити спочатку в мапі- буква чи цифра та потім викликати відповідний метод тоді другий фор непотрібний
                 counterSuccessComparing++;
+                continue;
             }
-            for (String temp2 : uniqueLetter.keySet()){
-                if (checkByLetter(temp1,temp2,uniqueLetter.get(temp1),uniqueLetter.get(temp2))){ // проверка на регистры !!!!!! багато зайвих параметрів
+            for (String temp2 : countUniqueLetter.keySet()){
+                if (checkByLetter(countUniqueLetter,temp1,temp2)){ // проверка на регистры !!!!!! багато зайвих параметрів
                     counterSuccessComparing++;
                 }
             }
         }
-        if (counterSuccessComparing==uniqueLetter.size()){
+        if (counterSuccessComparing==countUniqueLetter.size()){
             result=true;
         }
         return result;
@@ -86,9 +87,9 @@ class BalanceString {
         }
         return result;
     }
-    boolean checkByLetter(String firstElement, String secondElement, int firstElementCount, int secondElementCount){
+    boolean checkByLetter(Map<String,Integer> countUniqueLetter, String firstElement, String secondElement){
         boolean result = false;
-        if (firstElementCount==secondElementCount){
+        if (countUniqueLetter.get(firstElement)==countUniqueLetter.get(secondElement)){
             if (Character.isLowerCase(firstElement.charAt(0)) && Character.isUpperCase(secondElement.charAt(0))){
                 if (firstElement.charAt(0) == Character.toLowerCase(secondElement.charAt(0))){
                     result = true;
