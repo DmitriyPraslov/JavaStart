@@ -4,16 +4,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Translation {
-    String name;
-    int translationTime;
-    List<Activities> translationActivities = new LinkedList<>();
+    private String name;
+    private int translationTime;
+    private RadioHost radioHost;
+    private List<Activities> translationActivities = new LinkedList<>();
 
-    Translation(String name ,int time){
+    Translation(String name ,double time, RadioHost radioHost){
         this.name = name;
-        this.translationTime = time;
+        translationTime = convertToSecond(convertToSecond(time));
+        this.radioHost = radioHost;
     }
 
-    void addActivities (Activities newActivities){
+    int convertToSecond (double time){
+        int result;
+        result = ((int) time * 60) + ((int) time*100)%100;
+        return result;
+    }
+
+    public int getTranslationTime() {
+        return translationTime;
+    }
+
+    boolean addActivities (Activities newActivities){
         int totalActivitiesTime = getTotalActivitiesTime();
         int totalPaymentTime = getTotalPaymentTime();
 
@@ -21,14 +33,18 @@ public class Translation {
             if (newActivities.isPaymentActivities==true){
                 if (totalPaymentTime+ newActivities.time<translationTime/2){
                     translationActivities.add(newActivities);
+                    return true;
                 } else{
                     System.out.println("You don't have enough time for this activities");
+                    return false;
                 }
             } else {
                 translationActivities.add(newActivities);
+                return true;
             }
         } else {
             System.out.println("You don't have enough time for this activities");
+            return false;
         }
     }
 
@@ -50,17 +66,20 @@ public class Translation {
         return result;
     }
 
-    void showTranslationComponents (){
-        System.out.println(translationActivities);
+    void startTranslation (){
+        for (Activities temp : translationActivities){
+            System.out.println(temp);
+        }
+        radioHost.addTranslation(this);
     }
 
-    double showProfit (){
+    void showProfit (){
         double result = 0;
         for (Activities temp : translationActivities){
             if (temp.isPaymentActivities==true){
                 result+= temp.takeProfit();
             }
         }
-        return result;
+        System.out.println(this.name+" profit "+result);
     }
 }

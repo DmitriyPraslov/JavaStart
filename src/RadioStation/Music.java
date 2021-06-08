@@ -7,8 +7,16 @@ public class Music extends Activities{
     Music (String artistName, String trackName, double time){
         this.artistName = artistName;
         this.trackName = trackName;
-        this.time = time;
+        this.time = ((int) time * 60) + ((int) time*100)%100;
         isPaymentActivities = false;
         price = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "artistName='" + artistName + '\'' +
+                ", trackName='" + trackName + '\'' +
+                '}';
     }
 }
