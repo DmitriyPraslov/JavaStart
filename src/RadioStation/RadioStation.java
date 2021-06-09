@@ -5,17 +5,29 @@ import java.util.List;
 
 public class RadioStation {
     private List<Translation> translationList = new LinkedList<>();
+    private List<RadioHost> radioHostList = new LinkedList<>();
 
     void addTranslation(Translation newTranslation){
         translationList.add(newTranslation);
     }
 
+    void startAllTranslation(){
+        for (Translation temp : translationList){
+            temp.startTranslation();
+        }
+    }
+
+    void addRadioHost(RadioHost newRadioHost){
+        radioHostList.add(newRadioHost);
+    }
 
 
     public static void main(String[] args) {
         RadioStation radioStationAustralia = new RadioStation();
-        RadioHost radioHost1 = new RadioHost();
-        RadioHost radioHost2 = new RadioHost();
+        RadioHost radioHost1 = new RadioHost("Alex", 4.0, true);
+        RadioHost radioHost2 = new RadioHost("Bob", 10.0, false);
+        radioStationAustralia.addRadioHost(radioHost1);
+        radioStationAustralia.addRadioHost(radioHost2);
         Translation translation1 = new Translation("translation1",2.00,radioHost1);
         Music track1 = new Music("AC/DC","Highway to Hell",04.21);
         Music track2 = new Music("Depeche Mode","Wrong",03.13);
@@ -45,5 +57,6 @@ public class RadioStation {
         radioStationAustralia.addTranslation(translation1);
         translation1.showProfit();
         translation1.startTranslation();
+        System.out.println(radioHost1.getWorkAgeHour());
     }
 }
