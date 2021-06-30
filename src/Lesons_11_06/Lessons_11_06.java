@@ -6,8 +6,9 @@ public class Lessons_11_06 {
     public static void main(String[] args) {
         int[] arr = {-5,2,-8,-1,5,3,-9,0,4,1};
         int[] arr1 = {2,5,1,3};
+        int[] arr2 = {2,5,1,3,0,-3};
 //        System.out.println(Arrays.toString(findSubArr(arr)));
-        System.out.println(getResult(arr1,8));
+        System.out.println(getResult(arr2,8));
 
     }
 
@@ -29,10 +30,16 @@ public class Lessons_11_06 {
         for (int i=0;i<arr.length-1;i++){
             for (int j=i+1;j<arr.length;j++) {
                 for (int k=j;k<arr.length;k++){
+                    if (Arrays.copyOfRange(arr,j,k+1).length>2){
+                        result.add(new int[]{arr[i],arr[j],arr[k]});
+                    }
                     result.add(addElementInArray(arr[i],Arrays.copyOfRange(arr,j,k+1)));
                 }
             }
         }
+//        for(int[] temp : result){
+//            System.out.println(Arrays.toString(temp));
+//        }
         return result;
     }
 
