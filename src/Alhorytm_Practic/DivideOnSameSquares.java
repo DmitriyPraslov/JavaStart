@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DivideOnSameSquares {
     public static void main(String[] args) {
-        System.out.println(findCountSameSquares(2,4));
+        findCountSameSquares(2,4);
     }
     static int findCountSameSquares (int a, int b){
         int result = 0;
@@ -14,19 +14,32 @@ public class DivideOnSameSquares {
             return result;
         }
         int[][] rectangle = buildRectangle(a,b);
-        for (int[] temp : rectangle){
-            System.out.println(Arrays.toString(temp));
-        }
+//        for (int[] temp : rectangle){
+//            System.out.println(Arrays.toString(temp));
+//        }
         List<Integer[][]> squaresList = new LinkedList<>();
-        int rectangleSpace = countSpace(rectangle);
-        squaresList = buildSquares(rectangle);
-        for (Integer[][] temp : squaresList) {
-            for (Integer[] tem : temp){
-                System.out.println(Arrays.toString(tem));
+        int rectangleSpace = a*b;  // площадь прямоугольника
+        squaresList = buildSquares(rectangle); // генерация квадратов
+        int countIteration = calculateCountTypeSquares(squaresList);  // подсчёт груп квадратов с разными сторонами
+        for (int i=1;i<=countIteration;i++){
+            int sumAllSquaresSpace = 0;
+            result = 0;
+            for (Integer[][] temp : squaresList){
+                if (temp.length-1==i){
+                    sumAllSquaresSpace += countSpace(temp);
+                    result++;
+                }
             }
-            System.out.println("-------------------");
+            if (sumAllSquaresSpace==rectangleSpace){
+                System.out.println("Число квадратов: "+result + " Со сторонами: "+ i);
+            }
         }
-        result = 1;
+//        for (Integer[][] temp : squaresList) {
+//            for (Integer[] tem : temp){
+//                System.out.println(Arrays.toString(tem));
+//            }
+//            System.out.println("-------------------");
+//        }
         return result;
     }
     static int[][] buildRectangle (int a, int b){
@@ -41,7 +54,17 @@ public class DivideOnSameSquares {
         return result;
     }
 
-    static int countSpace (int[][] arr){
+    static int calculateCountTypeSquares (List<Integer[][]> list){
+        int result = list.get(0).length-1;
+        for (Integer[][] temp : list){
+            if (temp.length-1>result){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    static int countSpace (Integer[][] arr){
         int result = (arr.length-1) * (arr[0].length-1);
         return result;
     }
