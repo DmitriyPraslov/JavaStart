@@ -6,6 +6,11 @@ public class Lesson2 {
         h1.showHumanState();
         h1.giveExperience(100);
         h1.showHumanState();
+        h1.giveExperience(100);
+        h1.showHumanState();
+        h1.giveExperience(100);
+        h1.giveExperience(100);
+        h1.showHumanState();
     }
 }
 
