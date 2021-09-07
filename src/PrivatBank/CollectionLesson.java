@@ -47,8 +47,50 @@ public class CollectionLesson {
 //        System.out.println(list1);
 
         //---------------------------3------------------------//
-        File file = new File("D:\\Java\\test");
-        scanFolder(file);
+//        File file = new File("D:\\Java\\test");
+//        scanFolder(file);
+
+        //-------------------------5---------------------------//
+//        List<Integer> integerList = new ArrayList<>(Arrays.asList(7,-2,1,5,-10,4,8,21,0));
+//        System.out.println(listSort(integerList,3));
+
+
+        //------------------------8-----------------------------//
+//        MyCollection<Integer> mc = new MyCollection<>();
+//        mc.add(5);
+//        mc.add(2);
+//        mc.add(-3);
+//        mc.add(6);
+//        mc.add(4);
+//        System.out.println(mc.findElement(-7));
+    }
+
+    public static List<Integer> listSort (List<Integer> list, int x){
+        int counter = 0;
+            for (int i=0;i<list.size();i++){
+                if (list.get(i)>=x&&counter<list.size()){
+                    shift(list,i);
+                    i--;
+                    counter++;
+                } else if(counter>=list.size()){
+                    break;
+                }
+            }
+        return list;
+    }
+
+    public static void shift(List<Integer> list, int index){
+        for (int i=list.size()-1;i>index;i--){
+            int temp = list.get(i);
+            list.set(i,list.get(index));
+            for (int j=index;j<list.size();j++){
+                if (j==list.size()-1){
+                    list.set(j,temp);
+                    break;
+                }
+                list.set(j,list.get(j+1));
+            }
+        }
     }
 
     public static File[] scanFolder (File file){
@@ -79,5 +121,26 @@ public class CollectionLesson {
         result.append(digits.pop());
         }
         return check?Integer.parseInt(result.toString())*(-1):Integer.parseInt(result.toString());
+    }
+}
+class MyCollection <T extends Number> {
+    List<T> list = new ArrayList<>();
+
+    public void add(T element) {
+        list.add(element);
+    }
+
+    public T remove(int index) {
+        return list.remove(index);
+    }
+
+    public T findElement (T element){
+        NavigableSet<T> copyList = new TreeSet<>(list);
+        if (copyList.contains(element)){
+            return element;
+        }
+        T higherElement = copyList.higher(element)==null?copyList.last():copyList.higher(element);
+        T lowerElement = copyList.lower(element)==null?copyList.first():copyList.lower(element);;
+        return Math.abs(element.doubleValue()-higherElement.doubleValue())>Math.abs(element.doubleValue()-lowerElement.doubleValue())?lowerElement:higherElement;
     }
 }
