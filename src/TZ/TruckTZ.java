@@ -132,6 +132,7 @@ public class TruckTZ {
 }
     // ------------------------------------------------(4)-------------------------------------------------------------------
 /*
-SELECT * from Trips, User WHERE Users_Id = " Request_at Between 2013-10-01 and 2013-10-03 AND Status = "yes"
+SELECT * FROM (SELECT Users_id, Banned, Role FROM Users WHERE Banned = "No" and Role != "partner") AS a , (SELECT ID, Client_Id, Driver_Id, City_Id, Status, Request_at FROM Trips WHERE Request_at BETWEEN '2013-10-01' AND '2013-10-03') AS b WHERE a.Users_id = b.Client_id
+SELECT a.Request_at, b.Request_at, a.TotalCount, b.CencelledCount, round((b.CencelledCount*1.0/a.TotalCount*1.0),2) as CencellationRatio FROM (SELECT Request_at, count(*) as TotalCount FROM Views1 GROUP BY Request_At) as a, (SELECT Request_at, count(*) as CencelledCount FROM Views1 WHERE Status Like "%cencelled%" GROUP BY Request_At) as b WHERE a.Request_at = b.Request_at;
  */
 
